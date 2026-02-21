@@ -7,6 +7,7 @@ use App\Http\Requests\SignupRequest;
 use App\Models\User;
 use App\Services\CustomTokenService;
 use Hash;
+use App\Events\TokenCreated;
 use Illuminate\Http\Request;
 
 class AuthController extends Controller
@@ -21,6 +22,9 @@ class AuthController extends Controller
        }
 
         $token = $tokenService->createToken($user);
+        if($token) {
+            event(new TokenCreated($user->id));
+        }
 
         return response()->json([
             'access_token' => $token,
