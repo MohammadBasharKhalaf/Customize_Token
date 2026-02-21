@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Config;
 class CustomTokenService
 {
     protected string $secret ;
-    protected int $TTL =3600;
+    protected int $TTL =60; // Token Time To Live in seconds
 
     public function __construct(){
         $this->secret = Config::get('app.key');
