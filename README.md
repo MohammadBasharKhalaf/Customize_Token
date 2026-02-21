@@ -63,10 +63,10 @@ DB_PASSWORD=
 CUSTOM_TOKEN_TTL=3600
 ```
 
-4. Run migrations:
+4. Run migrations and seed:
 
 ```bash
-php artisan migrate
+php artisan migrate:refresh --seed
 ```
 
 ---
